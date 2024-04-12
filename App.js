@@ -10,8 +10,8 @@ export default class App {
     this.#engine = new BABYLON.Engine(canvas);
     this.#scene = new BABYLON.Scene(this.#engine);
     
-    this.#createLight();
     this.#createCamera();
+    this.#createLight();
     this.#createModel();
     this.#setupEvents();
   }
@@ -27,7 +27,7 @@ export default class App {
   }
 
   #createModel() {
-    this.#box = BABYLON.MeshBuilder.CreateBox("myBox");
+    this.#box = BABYLON.MeshBuilder.CreateBox("myBox");    
   }
 
   #setupEvents() {
