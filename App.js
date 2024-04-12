@@ -7,7 +7,7 @@ export default class App {
   
   constructor() {
     const canvas = document.querySelector("canvas");
-    this.#engine = new BABYLON.Engine(canvas,);
+    this.#engine = new BABYLON.Engine(canvas);
     this.#scene = new BABYLON.Scene(this.#engine);
     
     this.#createLight();
@@ -33,6 +33,7 @@ export default class App {
   }
 
   #setupEvents() {
+    this.#engine.runRenderLoop(this.render.bind(this))
     window.addEventListener("resize", this.#resize.bind(this));
     this.#scene.registerBeforeRender(this.update.bind(this));
   }
