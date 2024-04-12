@@ -14,8 +14,6 @@ export default class App {
     this.#createCamera();
     this.#createModel();
     this.#setupEvents();
-
-    this.#engine.runRenderLoop(this.render.bind(this))
   }
 
   #createLight() {
@@ -36,6 +34,7 @@ export default class App {
     this.#engine.runRenderLoop(this.render.bind(this))
     window.addEventListener("resize", this.#resize.bind(this));
     this.#scene.registerBeforeRender(this.update.bind(this));
+    this.#engine.runRenderLoop(this.render.bind(this))
   }
 
   update({ deltaTime }) {
