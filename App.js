@@ -31,7 +31,6 @@ export default class App {
   }
 
   #setupEvents() {
-    this.#engine.runRenderLoop(this.render.bind(this))
     window.addEventListener("resize", this.#resize.bind(this));
     this.#scene.registerBeforeRender(this.update.bind(this));
     this.#engine.runRenderLoop(this.render.bind(this))
