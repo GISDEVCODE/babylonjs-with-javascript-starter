@@ -3,11 +3,11 @@ import * as BABYLON from "babylonjs"
 export default class App {
   #engine;
   #scene;
-  #box;
+  #mesh;
   
   constructor() {
     const canvas = document.querySelector("canvas");
-    this.#engine = new BABYLON.Engine(canvas);
+    this.#engine = new BABYLON.Engine(canvas, true, { adaptToDeviceRatio: true });
     this.#scene = new BABYLON.Scene(this.#engine);
     
     this.#createCamera();
@@ -27,7 +27,7 @@ export default class App {
   }
 
   #createModel() {
-    this.#box = BABYLON.MeshBuilder.CreateBox("myBox");    
+    this.#mesh = BABYLON.MeshBuilder.CreateBox("myBox");    
   }
 
   #setupEvents() {
@@ -37,7 +37,7 @@ export default class App {
   }
 
   update({ deltaTime }) {
-    this.#box.rotation.x += deltaTime / 1000;
+    this.#mesh.rotation.x += deltaTime / 1000;
   }
 
   render() {
