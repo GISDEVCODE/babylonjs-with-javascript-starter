@@ -1,4 +1,4 @@
-import * as BABYLON from "babylonjs"
+import * as BABYLON from "@babylonjs/core"
 
 export default class App {
   #engine;
@@ -12,7 +12,7 @@ export default class App {
     
     this.#createCamera();
     this.#createLight();
-    this.#createModel();
+    this.#createModel();  
     this.#setupEvents();
   }
 
@@ -32,15 +32,16 @@ export default class App {
 
   #setupEvents() {
     window.addEventListener("resize", this.#resize.bind(this));
-    this.#scene.registerBeforeRender(this.update.bind(this));
     this.#engine.runRenderLoop(this.render.bind(this))
   }
 
-  update({ deltaTime }) {
+  update() {
+    const deltaTime = this.#engine.getDeltaTime();
     this.#mesh.rotation.x += deltaTime / 1000;
   }
 
   render() {
+    this.update();
     this.#scene.render();
   }
 
