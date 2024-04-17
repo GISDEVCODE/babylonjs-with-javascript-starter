@@ -23,7 +23,7 @@ export default class App {
   #createCamera() {
     this.#scene.createDefaultCamera(true, false, true);
     const camera = this.#scene.cameras[0];
-    camera.position = new BABYLON.Vector3(0, 0, 4);
+    camera.position = new BABYLON.Vector3(0, 0, -4);
   }
 
   #createModel() {
